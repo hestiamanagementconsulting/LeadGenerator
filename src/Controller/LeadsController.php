@@ -120,15 +120,24 @@ class LeadsController extends AppController
         //Recuperamos de la request el campo del formulario donde se encuentra el CSV
         $data = $this->request->data['csv'];
         //Recuperamos de la request el id de las campañas seleccionadas
-        $arraycampana =  array();
+        $arraycampana = array();
         $nav = $this->request->data['OpcionesCampana'];
         if($nav){
             foreach ($nav as $value){
                 array_push($arraycampana,$value);
-                //$this->log ($value);
             }
         }
+        //Recuperamos de la request el id de las etiquetas seleccionadas
+        $arrayetiquetas = array();
+        $nav = $this->request->data['OpcionesEtiqueta'];
+        if($nav){
+            foreach ($nav as $value){
+                array_push($arrayetiquetas,$value);
+            }
+        }
+        //Incializamos las tablas que vamos a utilizar en el proceso
         $CampaignLeadsTable = TableRegistry::get('CampaignLeads');
+        $CampaignLabelsTable = TableRegistry::get('CampaignLabels');
         $LeadsTable = TableRegistry::get('Leads');
         //Se lo asignamos a una variable fichero con un nombre temporal
         $file = $data['tmp_name'];
@@ -164,6 +173,13 @@ class LeadsController extends AppController
                     $CampaignLead->id_campaign = $campanavalue;
                     $CampaignLead->id_lead = $lead->id;
                     $CampaignLeadsTable->save($CampaignLead);
+                    //En caso de que el usuario haya escogido una o varias etiquetas para las campañas se le asignan
+                    foreach ($arrayetiquetas as $etiquetavalue){
+                        $CampaignLabel = $CampaignLabelsTable->newEntity();
+                        $CampaignLabel->id_campaign = $campanavalue;
+                        $CampaignLabel->id_label = $etiquetavalue;
+                        $CampaignLabelsTable->save($CampaignLabel);
+                    }  
                 }   
             }
             //else{

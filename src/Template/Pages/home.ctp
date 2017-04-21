@@ -169,12 +169,12 @@ $cakeDescription = 'Lead Generation';
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <select class="form-control" multiple="multiple">
-                                                                <option>Etiqueta 1</option>
-                                                                <option>Etiqueta 2</option>
-                                                                <option>Etiqueta 3</option>
-                                                                <option>Etiqueta 4</option>
-                                                                <option>Etiqueta 5</option>
+                                                            <select name="OpcionesEtiqueta[]" id="OpcionesEtiqueta" class="form-control" multiple="multiple">
+                                                                <option value="1">Etiqueta 1</option>
+                                                                <option value="2">Etiqueta 2</option>
+                                                                <option value="3">Etiqueta 3</option>
+                                                                <option value="4">Etiqueta 4</option>
+                                                                <option value="5">Etiqueta 5</option>
                                                             </select>
                                                         </td>
                                                     </tr>
