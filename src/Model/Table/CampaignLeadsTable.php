@@ -33,6 +33,10 @@ class CampaignLeadsTable extends Table
         $this->setTable('campaign_leads');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+        
+        //Relacionamos la tabla con la de Leads y campañas
+        $this->belongsTo('Leads');
+        $this->belongsTo('Campaigns');
     }
 
     /**

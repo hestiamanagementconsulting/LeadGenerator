@@ -106,4 +106,31 @@ class CampaignLeadsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    /**
+     * campaignAssignLead method
+     *
+     * @param Int|the Id_Lead.
+     * @param Int|the Id_Campaign.
+     * @return \Cake\Network\Response|null
+     */
+    public function campaignAssignLead($id_Lead = null, $id_Campaign = null)
+    {
+        //Si los dos parametros recibidos son diferentes de null continuamos ejecución, en caso contrario no tenemos operaciones a realizar por este método y devolveremos ejecución.
+        if(($id_lead != null && $id_Campaign !=null )) {
+            //Creamos una nueva instancia de la entidad CampaignLeads para después asignar los valores 
+            $campaignLead = $this->CampaignLeads->newEntity();
+            //Creamos un array con todos los valores de la fila, IMPORTANTE QUE LOS CAMPOS DEL ARRAY SE LLAMEN IGUAL QUE LAS COLUMNAS DE BBDD DE LA TABLA
+            $columns = [
+                'id_campaign' => $id_Campaign,
+                'id_lead' => $id_Lead
+            ];
+            //Asignamos el array a la entidad que habiamos creado
+            $campaignLead = $this->CampaignLeads->patchEntity($campaignLead, $columns);
+            //Ejecutamos el comando de guardar para persistir en BBDD
+            $this->CampaignLeads->save($campaignLead);
+        }
+        // No se va a mostrar nada por pantalla, no renderizar vista. Esta operación se realizará en el controlador que invoca a esta acción
+        $this->autoRender = false;
+    }
 }

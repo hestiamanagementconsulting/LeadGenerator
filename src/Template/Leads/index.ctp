@@ -3,29 +3,44 @@
   * @var \App\View\AppView $this
   */
 ?>
-<nav class="page-header" id="actions-sidebar">
-    <ul class="page-header">
+<div class="container">
+  <div class="header clearfix">
+    <nav>
+      <ul class="nav nav-pills pull-right">
+        <li role="presentation"><a href="Leads">Importación</a></li>
+        <li role="presentation"><a href="Campaigns">Campañas</a></li>
+        <li role="presentation"><a href="Labels">Etiquetas</a></li>
+        <li role="presentation" class="active"><a href="Leads">Listar Leads</a></li>
+      </ul>
+    </nav>
+    <h3 class="text-muted">Administración de Leads</h3>
+  </div>
+</div> <!-- /container -->
+<nav class="large-3 medium-4 columns" id="actions-sidebar">
+    <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Lead'), ['action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="col-lg-12">
-    <h3><?= __('Lista de Leads') ?></h3>
-    <table class="table table-striped" cellpadding="0" cellspacing="0">
+<div class="leads index large-9 medium-8 columns content">
+    <h3><?= __('Leads') ?></h3>
+    <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('#') ?></th>
-                <th><?= $this->Paginator->sort('Nombre') ?></th>
-                <th><?= $this->Paginator->sort('Apellido') ?></th>
-                <th><?= $this->Paginator->sort('Correo electrónico') ?></th>
-                <th><?= $this->Paginator->sort('Cargo') ?></th>
-                <th><?= $this->Paginator->sort('Empresa') ?></th>
-                <th><?= $this->Paginator->sort('Dirección web') ?></th>
-                <th><?= $this->Paginator->sort('Region / Pais') ?></th>
-                <th><?= $this->Paginator->sort('Teléfono') ?></th>
-                <th><?= $this->Paginator->sort('Creado') ?></th>
-                <th><?= $this->Paginator->sort('Modificado') ?></th>
-                <th class="actions"><?= __('Accciones') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('nombre') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('apellido') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('email') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('cargo') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('empresa') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('website') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('region_pais') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('telefono') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('LinkedIn') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('Industria') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
+                <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
@@ -40,12 +55,14 @@
                 <td><?= h($lead->website) ?></td>
                 <td><?= h($lead->region_pais) ?></td>
                 <td><?= h($lead->telefono) ?></td>
+                <td><?= h($lead->LinkedIn) ?></td>
+                <td><?= h($lead->Industria) ?></td>
                 <td><?= h($lead->created) ?></td>
                 <td><?= h($lead->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('Ver'), ['action' => 'view', $lead->id]) ?>
-                    <?= $this->Html->link(__('Editar'), ['action' => 'edit', $lead->id]) ?>
-                    <?= $this->Form->postLink(__('Borrar'), ['action' => 'delete', $lead->id], ['confirm' => __('Está seguro de querer eliminar el Lead # {0}?', $lead->id)]) ?>
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $lead->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $lead->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $lead->id], ['confirm' => __('Are you sure you want to delete # {0}?', $lead->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

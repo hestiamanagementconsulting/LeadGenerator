@@ -26,6 +26,8 @@ class LeadsFixture extends TestFixture
         'website' => ['type' => 'string', 'length' => 200, 'null' => true, 'default' => null, 'collate' => 'utf8_spanish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'region_pais' => ['type' => 'string', 'length' => 500, 'null' => true, 'default' => null, 'collate' => 'utf8_spanish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'telefono' => ['type' => 'string', 'length' => 50, 'null' => true, 'default' => null, 'collate' => 'utf8_spanish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'LinkedIn' => ['type' => 'string', 'length' => 200, 'null' => false, 'default' => null, 'collate' => 'utf8_spanish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'Industria' => ['type' => 'string', 'length' => 200, 'null' => false, 'default' => null, 'collate' => 'utf8_spanish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_constraints' => [
@@ -56,8 +58,10 @@ class LeadsFixture extends TestFixture
             'website' => 'Lorem ipsum dolor sit amet',
             'region_pais' => 'Lorem ipsum dolor sit amet',
             'telefono' => 'Lorem ipsum dolor sit amet',
-            'created' => '2017-04-08 20:35:32',
-            'modified' => '2017-04-08 20:35:32'
+            'LinkedIn' => 'Lorem ipsum dolor sit amet',
+            'Industria' => 'Lorem ipsum dolor sit amet',
+            'created' => '2017-04-21 08:33:48',
+            'modified' => '2017-04-21 08:33:48'
         ],
     ];
 }

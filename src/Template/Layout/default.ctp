@@ -34,18 +34,6 @@ $cakeDescription = 'Lead Generator - Hestia Management Consulting';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <div class="container">
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active"><a href="Campaigns">Campañas</a></li>
-            <li role="presentation"><a href="Labels">Etiquetas</a></li>
-            <li role="presentation"><a href="Leads">Listar Leads</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Lead Generator - HMC project</h3>
-      </div>
-    </div> <!-- /container -->
     <?= $this->Flash->render() ?>
     <div class="container clearfix">
         <?= $this->fetch('content') ?>

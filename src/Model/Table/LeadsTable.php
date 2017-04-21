@@ -37,6 +37,9 @@ class LeadsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+        //relacionamos la tabla con la tabla de campañas
+        //$this->belongsToMany('Campaings', ['joinTable' => 'Campaign_Leads',]);
+        $this->belongsToMany('Campaings', ['through' => 'Campaign_Leads',]);
     }
 
     /**
@@ -78,6 +81,14 @@ class LeadsTable extends Table
         $validator
             ->allowEmpty('telefono');
 
+        $validator
+            ->requirePresence('LinkedIn', 'create')
+            ->notEmpty('LinkedIn');
+
+        $validator
+            ->requirePresence('Industria', 'create')
+            ->notEmpty('Industria');
+
         return $validator;
     }
 
@@ -94,5 +105,16 @@ class LeadsTable extends Table
         $rules->add($rules->isUnique(['id']));
 
         return $rules;
+    }
+
+    /**
+     * 
+     *
+     * @param mail to find
+     * @return Registry Leads
+     */
+    public function findByEmail($email)
+    {
+        return $this->find('first', array('conditions' => array ('Leads.email' => $email)));
     }
 }

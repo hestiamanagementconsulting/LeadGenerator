@@ -15,6 +15,8 @@ use Cake\ORM\Entity;
  * @property string $website
  * @property string $region_pais
  * @property string $telefono
+ * @property string $LinkedIn
+ * @property string $Industria
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  */

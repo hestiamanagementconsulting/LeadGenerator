@@ -37,6 +37,8 @@ class CampaignsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+        //relacionamos la tabla con la tabla de Leads
+        $this->belongsToMany('Leads', ['through' => 'Campaign_Leads',]);
     }
 
     /**
