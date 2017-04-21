@@ -173,13 +173,6 @@ class LeadsController extends AppController
                     $CampaignLead->id_campaign = $campanavalue;
                     $CampaignLead->id_lead = $lead->id;
                     $CampaignLeadsTable->save($CampaignLead);
-                    //En caso de que el usuario haya escogido una o varias etiquetas para las campañas se le asignan
-                    foreach ($arrayetiquetas as $etiquetavalue){
-                        $CampaignLabel = $CampaignLabelsTable->newEntity();
-                        $CampaignLabel->id_campaign = $campanavalue;
-                        $CampaignLabel->id_label = $etiquetavalue;
-                        $CampaignLabelsTable->save($CampaignLabel);
-                    }  
                 }   
             }
             //else{
@@ -195,6 +188,16 @@ class LeadsController extends AppController
             // }
         }
         fclose($handle);
+        //En caso de que el usuario haya escogido una o varias etiquetas para las campañas se le asignan
+        //Este código se realiza fuera del bucle dado que la relación es con las campañas y no por cada Lead
+        foreach ($arraycampana as $campanavalue){
+            foreach ($arrayetiquetas as $etiquetavalue){
+                $CampaignLabel = $CampaignLabelsTable->newEntity();
+                $CampaignLabel->id_campaign = $campanavalue;
+                $CampaignLabel->id_label = $etiquetavalue;
+                $CampaignLabelsTable->save($CampaignLabel);
+            } 
+        }
         $this->Flash->success(__('Los leads se han importado correctamente.'));
         return $this->redirect(['action' => 'index']);
     }
