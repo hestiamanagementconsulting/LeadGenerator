@@ -35,182 +35,88 @@ $cakeDescription = 'Lead Generation';
     <?= $this->Html->meta('icon') ?>
     <?= $this->Html->css('bootstrap.min') ?>
     <?= $this->Html->script(['bootstrap.min', 'jquery-3.2.0.min']) ?>
+    <!-- Custom CSS -->
+    <?= $this->Html->css('landing-page.css') ?>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:500i|Roboto:300,400,700|Roboto+Mono" rel="stylesheet">
 </head>
-<body class="home">
-<div class="container">
-  <div class="header clearfix">
-    <nav>
-      <ul class="nav nav-pills pull-right">
-        <li role="presentation" class="active"><a href="Leads">Importación</a></li>
-        <li role="presentation"><a href="Campaigns">Campañas</a></li>
-        <li role="presentation"><a href="Labels">Etiquetas</a></li>
-        <li role="presentation"><a href="Leads">Listar Leads</a></li>
-      </ul>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="#">Lead Generator</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="importCSV/importView">Importaci&oacute;n</a>
+                    </li>
+                    <li>
+                        <a href="Campaigns">Campañas</a>
+                    </li>
+                    <li>
+                        <a href="Labels">Etiquetas</a>
+                    </li>
+                    <li>
+                        <a href="Leads">Listar Leads</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
     </nav>
-    <h3 class="text-muted">Administración de Leads</h3>
-  </div>
-</div> <!-- /container -->
-<?= $this->Form->create('Importar',['type' => 'file','url' => ['controller'=>'Leads','action' => 'importCSV'],'class'=>'form-inline','role'=>'form',]) ?>
-<fieldset>
-    <div class="container">
-        <div class="row">
-            <table class="table table-bordered">
-                <tbody>
-                    <tr>
-                        <td>
-                            <table class="">
-                                <tbody>
-                                    <tr>
-                                        <td class="">
-                                            <table class="">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                             <h1 class="">1</h1>
+    <!-- Header -->
+    <a name="about"></a>
+    <div class="intro-header">
+        <div class="container">
 
-                                                        </td>
-                                                        <td>
-                                                             <h3 class="">Archivo</h3>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1>Lead Generator</h1>
+                        <h3>Sistema de gestión de Leads</h3>
+                        <hr class="intro-divider">
+                        <ul class="list-inline intro-social-buttons">
+                            <li>
+                                <a href="importCSV/importView" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Importación</span></a>
+                            </li>
+                            <li>
+                                <a href="Campaigns" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Campañas</span></a>
+                            </li>
+                            <li>
+                                <a href="Labels" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Etiquetas</span></a>
+                            </li>
+                            <li>
+                                <a href="Leads" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Listar Leads</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <img src="//placehold.it/100x100" class="img-responsive">
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                        <td class="">
-                                          <div class="form-group">
-                                            <div class="col-md-4">
-                                              <?php echo $this->Form->input('csv', ['type'=>'file','class' => 'form-control', 'label' => false, 'placeholder' => 'csv upload',]); ?>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td class="">&nbsp;&nbsp;</td>
-                                        <td class="">
-                                            <table class="">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                             <h1 class="">2</h1>
+        </div>
+        <!-- /.container -->
 
-                                                        </td>
-                                                        <td>
-                                                             <h3 class="">Campañas</h3>
-
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <select name="OpcionesCampana[]" id="OpcionesCampana" class="form-control" multiple="multiple">
-                                                                <option value="1">Campaña 1</option>
-                                                                <option value="2">Campaña 2</option>
-                                                                <option value="3">Campaña 3</option>
-                                                                <option value="4">Campaña 4</option>
-                                                                <option value="5">Campaña 5</option>
-                                                            </select>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-group">
-                                                                <div class="col-md-4">
-                                                                    <button id="Submit" name="Submit" class="btn btn-primary">Asociar Campaña</button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class=""><h1>ó</h1></td>
-                                        <td class="">&nbsp;&nbsp;</td>
-                                        <td class="">&nbsp;&nbsp;</td>
-                                        <td class="">&nbsp;&nbsp;</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">
-                                            <img src="//placehold.it/100x100" class="img-responsive">
-                                        </td>
-                                        <td class="">
-                                            <table class="">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>nombre, apellidos, email, cargo, empresa, website, region</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <textarea class="form-control"></textarea>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                        <td class="">&nbsp;&nbsp;</td>
-                                        <td class="">
-                                      <table class="">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                             <h1 class="">3</h1>
-
-                                                        </td>
-                                                        <td>
-                                                             <h3 class="">Etiquetas</h3>
-
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <select name="OpcionesEtiqueta[]" id="OpcionesEtiqueta" class="form-control" multiple="multiple">
-                                                                <option value="1">Etiqueta 1</option>
-                                                                <option value="2">Etiqueta 2</option>
-                                                                <option value="3">Etiqueta 3</option>
-                                                                <option value="4">Etiqueta 4</option>
-                                                                <option value="5">Etiqueta 5</option>
-                                                            </select>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-group">
-                                                                <div class="col-md-4">
-                                                                    <button id="Submit" name="Submit" class="btn btn-primary">Asociar etiqueta</button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="form-group">
-              <div class="col-md-1">
-                  <button id="Submit" name="Submit" class="btn btn-primary">Cargar Leads</button>
-              </div>
+    </div>
+    <!-- /.intro-header -->
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="copyright text-muted small">Copyright &copy; Hestia Management Consulting 2017. Todos los derechos reservados</p>
+                </div>
             </div>
         </div>
-    </div>
-    
-</fieldset>
-<?= $this->Form->end() ?>
-<div id="footer">
-  <div class="container">
-    <p class="text-muted credit">Aplicación creada por <a href="wwww.hestiamanagementconsulting.com">HMC - Hestia Management Consulting</a>. Todos los derechos reservados.</p>
-  </div>
-</div>
+    </footer>
 </body>
 </html>
