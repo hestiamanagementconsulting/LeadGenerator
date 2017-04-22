@@ -24,28 +24,27 @@
 </nav>
 <div class="col-lg-12">
     <h3><?= __('Lista de etiquetas') ?></h3>
-    <table class="table table-striped" cellpadding="0" cellspacing="0">
+    <table class="table table-hover table-condensed table-responsive" cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('#') ?></th>
+                <th class="actions"><?= __('Accciones') ?></th>
                 <th><?= $this->Paginator->sort('Nombre') ?></th>
                 <th><?= $this->Paginator->sort('Creada') ?></th>
                 <th><?= $this->Paginator->sort('Modificada') ?></th>
-                <th class="actions"><?= __('Accciones') ?></th>
+                
             </tr>
         </thead>
         <tbody>
             <?php foreach ($labels as $label): ?>
             <tr>
-                <td><?= $this->Number->format($label->id) ?></td>
-                <td><?= h($label->nombre) ?></td>
-                <td><?= h($label->created) ?></td>
-                <td><?= h($label->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $label->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['action' => 'edit', $label->id]) ?>
                     <?= $this->Form->postLink(__('Borrar'), ['action' => 'delete', $label->id], ['confirm' => __('Est&aacute; seguro de querer eliminar la etiqueta # {0}?', $label->id)]) ?>
                 </td>
+                <td><?= h($label->nombre) ?></td>
+                <td><?= h($label->created) ?></td>
+                <td><?= h($label->modified) ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>

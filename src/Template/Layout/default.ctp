@@ -29,6 +29,9 @@ $cakeDescription = 'Lead Generator - Hestia Management Consulting';
     <?= $this->Html->css('bootstrap.min') ?>
     <?= $this->Html->script(['bootstrap.min', 'jquery-3.2.0.min']) ?>
 
+    <!-- Custom CSS -->
+    <?= $this->Html->css('landing-page.css') ?>
+    
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
@@ -51,13 +54,16 @@ $cakeDescription = 'Lead Generator - Hestia Management Consulting';
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="#about">About</a>
+                        <a href="importCSV/importView">Importaci&oacute;n</a>
                     </li>
                     <li>
-                        <a href="#services">Services</a>
+                        <a href="Campaigns">Campañas</a>
                     </li>
                     <li>
-                        <a href="#contact">Contact</a>
+                        <a href="Labels">Etiquetas</a>
+                    </li>
+                    <li>
+                        <a href="Leads">Listar Leads</a>
                     </li>
                 </ul>
             </div>

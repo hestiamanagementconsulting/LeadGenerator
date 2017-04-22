@@ -21,6 +21,7 @@ class ImportCSVController extends AppController
     public function importView()
     {
         //Rellenamos los campos de campañas para ser desplegables
+        $this->loadModel("Campaigns");
         $query = $this->Campaigns->find('all');
         $data = $query->all();
         foreach ($data as $value) {
@@ -28,6 +29,7 @@ class ImportCSVController extends AppController
         }
         $this->set(compact('OpcionesCampana'));
         //Rellenamos los campos de campañas para ser desplegables
+        $this->loadModel("Labels");
         $query = $Labels->find('all');
         $data = $query->all();
         foreach ($data as $value) {
