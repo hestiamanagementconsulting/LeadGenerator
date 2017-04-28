@@ -75,8 +75,15 @@ $cakeDescription = 'Lead Generator - Hestia Management Consulting';
     <div class="container clearfix">
         <?= $this->fetch('content') ?>
     </div>
-    <footer class="footer">
-        <p>&copy; 2017 Hestia Management Consulting</p>
-      </footer>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="copyright text-muted small">Copyright &copy; Hestia Management Consulting 2017. Todos los derechos reservados</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

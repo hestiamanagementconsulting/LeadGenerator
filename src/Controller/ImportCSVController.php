@@ -24,20 +24,19 @@ class ImportCSVController extends AppController
         $this->loadModel("Campaigns");
         $query = $this->Campaigns->find('all');
         $data = $query->all();
-        //$this->log ($data);
+        $this->log ($data);
         foreach ($data as $value) {
             $OpcionesCampana[$value['Campaigns']['id']] = $value['Campaigns']['nombre'];
-            $this->log ($OpcionesCampana);
+            $this->log ($value['Campaign']['id']);
         }
         $this->set(compact('OpcionesCampana'));
         //Rellenamos los campos de campañas para ser desplegables
         $this->loadModel("Labels");
         $queryLabels = $this->Labels->find('all');
         $dataLabels = $queryLabels->all();
-        //$this->log ($dataLabels);
+        $this->log ($dataLabels);
         foreach ($dataLabels as $valueLabel) {
             $OpcionesEtiqueta[$valueLabel['Labels']['id']] = $valueLabel['Labels']['nombre'];
-            $this->log ($OpcionesEtiqueta);
         }
         $this->set(compact('OpcionesEtiqueta'));
     }
