@@ -24,19 +24,19 @@ class ImportCSVController extends AppController
         $this->loadModel("Campaigns");
         $query = $this->Campaigns->find('all');
         $data = $query->all();
-        $this->log ($data);
+
         foreach ($data as $value) {
-            $OpcionesCampana[$value['Campaigns']['id']] = $value['Campaigns']['nombre'];
-            $this->log ($value['Campaign']['id']);
+            $OpcionesCampana[$value['id']] = $value['nombre'];
         }
         $this->set(compact('OpcionesCampana'));
+
         //Rellenamos los campos de campañas para ser desplegables
         $this->loadModel("Labels");
         $queryLabels = $this->Labels->find('all');
         $dataLabels = $queryLabels->all();
-        $this->log ($dataLabels);
+
         foreach ($dataLabels as $valueLabel) {
-            $OpcionesEtiqueta[$valueLabel['Labels']['id']] = $valueLabel['Labels']['nombre'];
+            $OpcionesEtiqueta[$valueLabel['id']] = $valueLabel['nombre'];
         }
         $this->set(compact('OpcionesEtiqueta'));
     }
@@ -52,7 +52,7 @@ class ImportCSVController extends AppController
         $data = $this->request->data['csv'];
         //Recuperamos de la request el id de las campañas seleccionadas
         $arraycampana = array();
-        $nav = $this->request->data['OpcionesCampana'];
+        $nav = $this->request->data['Campanas'];
         if($nav){
             foreach ($nav as $value){
                 array_push($arraycampana,$value);
@@ -60,7 +60,7 @@ class ImportCSVController extends AppController
         }
         //Recuperamos de la request el id de las etiquetas seleccionadas
         $arrayetiquetas = array();
-        $nav = $this->request->data['OpcionesEtiqueta'];
+        $nav = $this->request->data['Etiquetas'];
         if($nav){
             foreach ($nav as $value){
                 array_push($arrayetiquetas,$value);
@@ -81,6 +81,7 @@ class ImportCSVController extends AppController
                 continue;
             }
             //Creamos una nueva instancia de la entidad Lead para después asignar los valores 
+            $this->loadModel("Leads");
             $lead = $this->Leads->newEntity();
             //Creamos un array con todos los valores de la fila, IMPORTANTE QUE LOS CAMPOS DEL ARRAY SE LLAMEN IGUAL QUE LAS COLUMNAS DE BBDD DE LA TABLA
             $columns = [
@@ -106,17 +107,33 @@ class ImportCSVController extends AppController
                     $CampaignLeadsTable->save($CampaignLead);
                 }   
             }
-            //else{
-            //     //En caso de no insertar el Lead significa que ya existe el mail en BBDD con lo que se debe asociar el Lead existente a la nueva campaña
-            //     // $query = $Leads->find('all', [
-            //     //     'conditions' => ['Leads.email =' => ],
-            //     //     'contain' => ['Authors', 'Comments'],
-            //     //     'limit' => 10
-            //     // ]);
-            //     // $lead = $this->Leads->get($row[3], ['contain' => ['email']]);
-            //     $lead = $LeadsTable->findByEmail($row[3]);
-            //     $this->log ($lead);
-            // }
+            else{
+                //En caso de no insertar el Lead significa que ya existe el mail en BBDD con lo que se debe asociar el Lead existente a la nueva campaña
+                $query = $this->Leads->find()
+                            ->select(['id'])
+                            ->where(['email =' => $row[3] ]);
+                $mirow = $query->first();
+                $mirowid = $mirow['id'];
+
+                $this->loadModel("CampaignLeads");
+                $query2 = $this->CampaignLeads->find()
+                            ->select(['id_lead', 'id_campaign'])
+                            ->where(['id_lead =' => $mirowid ]);
+                $this->log($query2);            
+                //cambiar el first por un all o algo...
+                $mycampaignsleads = $query2->first();
+                $this->log($mycampaignsleads);
+                foreach ($arraycampana as $campanavalue){
+                    //hay que activar este if para insertar todo lead en leadcampaig siempre que no tenga ninguna campaña asociadad o bien cuando en el foreqach de las campaignleads no encuentra ninguna que coincida con la que queremos insertar.
+                    //if ($mycampaignsleads === null || ){
+                        $CampaignLead = $CampaignLeadsTable->newEntity();
+                        $CampaignLead->id_campaign = $campanavalue;
+                        $CampaignLead->id_lead = $mirowid;
+                        $CampaignLeadsTable->save($CampaignLead);
+                   // }
+                }                   
+ 
+            }
         }
         fclose($handle);
         //En caso de que el usuario haya escogido una o varias etiquetas para las campañas se le asignan
@@ -130,6 +147,7 @@ class ImportCSVController extends AppController
             } 
         }
         $this->Flash->success(__('Los leads se han importado correctamente.'));
-        return $this->redirect(['action' => 'index']);
+
+        return $this->redirect(array('controller' => 'Leads', 'action' => 'index')); //$this->Leads->redirect(['action' => 'index']);
     }
 }

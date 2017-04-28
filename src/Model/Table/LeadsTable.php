@@ -82,12 +82,10 @@ class LeadsTable extends Table
             ->allowEmpty('telefono');
 
         $validator
-            ->requirePresence('LinkedIn', 'create')
-            ->notEmpty('LinkedIn');
+            ->allowEmpty('LinkedIn');
 
         $validator
-            ->requirePresence('Industria', 'create')
-            ->notEmpty('Industria');
+            ->allowEmpty('Industria');   
 
         return $validator;
     }

@@ -106,4 +106,11 @@ class LeadsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+
+/*    public function findByEmail(Query $query, array $options)
+    {
+        $myLead = $options['Lead'];
+        return $query->where(['email' => $myLead->email]);
+    }*/
 }

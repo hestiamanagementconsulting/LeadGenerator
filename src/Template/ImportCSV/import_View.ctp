@@ -8,7 +8,7 @@
 <div class="intro-import">
     <div class="container">
         <div class="row">
-            <?= $this->Form->create('Importar',['type' => 'file','url' => ['controller'=>'Leads','action' => 'importCSV'],'class'=>'form-inline','role'=>'form',]) ?>
+            <?= $this->Form->create('Importar',['type' => 'file','url' => ['controller'=>'ImportCSV','action' => 'importCSV'],'class'=>'form-inline','role'=>'form',]) ?>
             <fieldset>
                 <table class="table table-bordered">
                     <tbody>
@@ -61,10 +61,12 @@
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <?php echo $this->Form->input('Campañas', array(
-                                                                    'multiple' => 'multiple',
-                                                                    'type' => 'select',
-                                                                )); ?>
+                                                                <?php
+                                                                echo $this->Form->select('Campanas', $OpcionesCampana, [
+                                                                    'multiple' => 'multiple'
+                                                                ]);
+                                                                ?>
+
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -111,10 +113,10 @@
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <?php echo $this->Form->input('Etiquetas', array(
-                                                                    'multiple' => 'multiple',
-                                                                    'type' => 'select',
-                                                                )); ?>
+                                                                <?php echo $this->Form->select('Etiquetas', $OpcionesEtiqueta, [
+                                                                    'multiple' => 'multiple'
+                                                                ]);
+                                                                 ?>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -128,12 +130,13 @@
                     </tbody>
                 </table>
             </fieldset>
-            <?= $this->Form->end() ?>
+            
             <div class="form-group">
               <div class="col-md-1">
                   <button id="Submit" name="Submit" class="btn btn-primary">Cargar Leads</button>
               </div>
             </div>
+            <?= $this->Form->end() ?>
         </div>
     </div>
 </div>    
