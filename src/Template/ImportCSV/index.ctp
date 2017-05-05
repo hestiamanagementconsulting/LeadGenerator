@@ -3,13 +3,13 @@
   * @var \App\View\AppView $this
   */
 ?>
-<div class="intro-import">
+<div class="intro-header">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <?= $this->Form->create('Importar',['type' => 'file','url' => ['controller'=>'ImportCSV','action' => 'importCSV'],'class'=>'form-inline','role'=>'form',]) ?>
+                <?= $this->Form->create(null, ['type' => 'file','url' => ['controller' => 'ImportCSV', 'action' => 'import'],'class'=>'form-inline','role'=>'form',]) ?>
                 <fieldset>
-                    <table class="table table-bordered">
+                    <table class="table table-responsive">
                         <tbody>
                             <tr>
                                 <td>
@@ -21,10 +21,14 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>
-                                                                     <h1 class="">1</h1>
+                                                                     <div class="intro-message">
+                                                                        <h3 class="intro-message">1</h3>
+                                                                    </div>
                                                                 </td>
                                                                 <td>
-                                                                     <h3 class="intro-message">Archivo</h3>
+                                                                    <div class="intro-message">
+                                                                        <h3 class="intro-message">Archivo</h3>
+                                                                    </div>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -48,12 +52,14 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>
-                                                                     <h1 class="">2</h1>
-
+                                                                    <div class="intro-message">
+                                                                        <h3 class="intro-message">2</h3>
+                                                                    </div>
                                                                 </td>
                                                                 <td>
-                                                                     <h3 class="intro-message">Campañas</h3>
-
+                                                                    <div class="intro-message">
+                                                                        <h3 class="intro-message">Campañas</h3>
+                                                                    </div>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -71,7 +77,11 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class=""><h1>ó</h1></td>
+                                                <td class="">
+                                                    <div class="intro-message">
+                                                        <h3 class="intro-message">ó</h3>
+                                                    </div>
+                                                </td>
                                                 <td class="">&nbsp;&nbsp;</td>
                                                 <td class="">&nbsp;&nbsp;</td>
                                                 <td class="">&nbsp;&nbsp;</td>
@@ -84,7 +94,11 @@
                                                     <table class="intro-message">
                                                         <tbody>
                                                             <tr>
-                                                                <td><h3>nombre, apellidos, email, cargo, empresa, website, region</h3></td>
+                                                                <td>
+                                                                    <div class="intro-message">
+                                                                        <h3 class="intro-message">Por texto</h3>
+                                                                    </div>
+                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
@@ -100,12 +114,14 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>
-                                                                     <h1 class="">3</h1>
-
+                                                                    <div class="intro-message">
+                                                                        <h3 class="intro-message">3</h3>
+                                                                    </div>
                                                                 </td>
                                                                 <td>
-                                                                     <h3 class="intro-message">Etiquetas</h3>
-
+                                                                    <div class="intro-message">
+                                                                        <h3 class="intro-message">Etiquetas</h3>
+                                                                    </div>
                                                                 </td>
                                                             </tr>
                                                             <tr>

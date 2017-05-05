@@ -44,7 +44,7 @@ class ImportCSVController extends AppController
      * @param file|the CSV file.
      * @return \Cake\Network\Response|null Redirects to index.
      */
-    public function importCSV($file = null)
+    public function import($file = null)
     {
         //Recuperamos de la request el campo del formulario donde se encuentra el CSV
         $data = $this->request->data['csv'];
@@ -74,8 +74,10 @@ class ImportCSVController extends AppController
         $handle = fopen($file, "r");
         //Por cada fila recuperada del fichero delimitadas por ; hacemos el tratamiento
         while (($row = fgetcsv($handle, 1950, ",")) !== FALSE) {
+            //$this->log("Dentro While!");
             //Si la primera fila contiene el literal nombre saltamos bucle ya que significa que es la cabecera del CSV
             if($row[1] == 'First Name') {
+                //$this->log("Fichero correcto!");
                 continue;
             }
             //Creamos una nueva instancia de la entidad Lead para después asignar los valores 
@@ -120,7 +122,7 @@ class ImportCSVController extends AppController
           
                 //TO DO cambiar el first por un all o algo...
                 $mycampaignsleads = $query2->first();
-                $this->log($mycampaignsleads);
+                //$this->log($mycampaignsleads);
                 foreach ($arraycampana as $campanavalue){
                     //hay que activar este if para insertar todo lead en leadcampaig siempre que no tenga ninguna campaña asociadad o bien cuando en el foreqach de las campaignleads no encuentra ninguna que coincida con la que queremos insertar.
                     //if ($mycampaignsleads === null || ){
@@ -145,7 +147,7 @@ class ImportCSVController extends AppController
             } 
         }
         $this->Flash->success(__('Los leads se han importado correctamente.'));
-
-        return $this->redirect(array('controller' => 'Leads', 'action' => 'index')); //$this->Leads->redirect(['action' => 'index']);
+        return $this->redirect(array('controller' => 'SearchLeads', 'action' => 'index')); 
+        
     }
 }
