@@ -3,12 +3,45 @@
   * @var \App\View\AppView $this
   */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Lead'), ['action' => 'add']) ?></li>
-    </ul>
-</nav>
+<br>
+<br>
+<br>
+<div class="container-fluid">
+    <h3><?= __('Búsqueda de Leads') ?></h3>
+    <div class="row">
+        <div class="col-md-12">
+            <?= $this->Form->create('Buscar',['type' => 'file','url' => ['controller'=>'SearchLeads','action' => 'searchLead'],'class'=>'form-inline','role'=>'form',]) ?>
+                <fieldset>
+                    <?php
+                        echo $this->Form->control('nombre');
+                        echo $this->Form->control('apellido');
+                        echo $this->Form->control('email');
+                        echo $this->Form->control('cargo');
+                        echo $this->Form->control('empresa');
+                        echo $this->Form->control('website');
+                        echo $this->Form->control('region_pais');
+                        echo $this->Form->control('telefono');
+                        echo $this->Form->control('LinkedIn');
+                        echo $this->Form->control('Industria');
+                        echo $this->Form->select('Campanas', $OpcionesCampana, [
+                                                 'multiple' => 'multiple'
+                                                 ]);
+                        echo $this->Form->select('Etiquetas', $OpcionesEtiqueta, [
+                                                 'multiple' => 'multiple'
+                                                 ]);                         
+                    ?>
+                    <div class="form-group">
+                      <div class="col-md-1">
+                          <button id="Submit" name="Submit" class="btn btn-primary">Buscar Leads</button>
+                      </div>
+                    </div>
+                </fieldset>
+            <?= $this->Form->end() ?>
+        </div>
+    </div>
+</div>
+<br>
+<br>
 <div class="leads index large-9 medium-8 columns content">
     <h3><?= __('Leads') ?></h3>
     <table cellpadding="0" cellspacing="0" class="table table-hover table-condensed table-responsive">

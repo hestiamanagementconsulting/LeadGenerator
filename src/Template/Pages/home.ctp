@@ -51,13 +51,13 @@ $cakeDescription = 'Lead Generation';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav" href="#">Lead Generator</a>
+                <a class="navbar-brand topnav" href="">Lead Generator</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="importCSV/importView">Importaci&oacute;n</a>
+                        <a href="importCSV">Importaci&oacute;n</a>
                     </li>
                     <li>
                         <a href="Campaigns">Campañas</a>
@@ -87,16 +87,16 @@ $cakeDescription = 'Lead Generation';
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
                             <li>
-                                <a href="importCSV/importView" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Importación</span></a>
+                                <a href="importCSV" class="btn btn-default btn-lg"><span class="network-name">Importación</span></a>
                             </li>
                             <li>
-                                <a href="Campaigns" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Campañas</span></a>
+                                <a href="Campaigns" class="btn btn-default btn-lg"><span class="network-name">Campañas</span></a>
                             </li>
                             <li>
-                                <a href="Labels" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Etiquetas</span></a>
+                                <a href="Labels" class="btn btn-default btn-lg"><span class="network-name">Etiquetas</span></a>
                             </li>
                             <li>
-                                <a href="Leads" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Listar Leads</span></a>
+                                <a href="SearchLeads" class="btn btn-default btn-lg"><span class="network-name">Buscar Leads</span></a>
                             </li>
                         </ul>
                     </div>

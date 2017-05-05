@@ -31,6 +31,8 @@ $cakeDescription = 'Lead Generator - Hestia Management Consulting';
 
     <!-- Custom CSS -->
     <?= $this->Html->css('landing-page.css') ?>
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:500i|Roboto:300,400,700|Roboto+Mono" rel="stylesheet">
     
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -54,7 +56,7 @@ $cakeDescription = 'Lead Generator - Hestia Management Consulting';
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="importCSV/importView">Importaci&oacute;n</a>
+                        <a href="importCSV">Importaci&oacute;n</a>
                     </li>
                     <li>
                         <a href="Campaigns">Campañas</a>
@@ -63,7 +65,7 @@ $cakeDescription = 'Lead Generator - Hestia Management Consulting';
                         <a href="Labels">Etiquetas</a>
                     </li>
                     <li>
-                        <a href="Leads">Listar Leads</a>
+                        <a href="SearchLeads">Buscar Leads</a>
                     </li>
                 </ul>
             </div>
@@ -72,7 +74,9 @@ $cakeDescription = 'Lead Generator - Hestia Management Consulting';
         <!-- /.container -->
     </nav>
     <?= $this->Flash->render() ?>
-    <div class="container clearfix">
+    <div class="">
+        <br>
+        <br>
         <?= $this->fetch('content') ?>
     </div>
     <!-- Footer -->

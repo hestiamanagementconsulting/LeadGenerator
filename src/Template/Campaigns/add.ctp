@@ -3,19 +3,6 @@
   * @var \App\View\AppView $this
   */
 ?>
-<div class="container">
-  <div class="header clearfix">
-    <nav>
-      <ul class="nav nav-pills pull-right">
-        <li role="presentation"><a href="../Leads">Importación</a></li>
-        <li role="presentation" class="active"><a href="../Campaigns">Campañas</a></li>
-        <li role="presentation"><a href="../Labels">Etiquetas</a></li>
-        <li role="presentation"><a href="../Leads">Listar Leads</a></li>
-      </ul>
-    </nav>
-    <h3 class="text-muted">Administración de Leads</h3>
-  </div>
-</div> <!-- /container -->
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>

@@ -7,18 +7,16 @@ use Cake\ORM\TableRegistry;
 
 /**
  * ImportCSV Controller
- *
- * @property \App\Model\Table\ImportCSVTable $ImportCSV
  */
 class ImportCSVController extends AppController
 {
     /**
-     * importView method
+     * index method
      *
      * @param nonw
      * @return \Cake\Network\Response|null Redirects to index.
      */
-    public function importView()
+    public function index()
     {
         //Rellenamos los campos de campañas para ser desplegables
         $this->loadModel("Campaigns");
@@ -119,8 +117,8 @@ class ImportCSVController extends AppController
                 $query2 = $this->CampaignLeads->find()
                             ->select(['id_lead', 'id_campaign'])
                             ->where(['id_lead =' => $mirowid ]);
-                $this->log($query2);            
-                //cambiar el first por un all o algo...
+          
+                //TO DO cambiar el first por un all o algo...
                 $mycampaignsleads = $query2->first();
                 $this->log($mycampaignsleads);
                 foreach ($arraycampana as $campanavalue){
