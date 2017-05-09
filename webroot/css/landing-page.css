@@ -42,10 +42,14 @@ h6 {
 .intro-import {
     padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 50px;
-    text-align: center;
     color: #f8f8f8;
-    background: url(../webroot/img/import_leads.jpg) no-repeat center center;
+    background: url(../webroot/img/intro-bg.jpg) no-repeat center center;
     background-size: cover;
+}
+
+.title-message-import {
+    position: relative;
+    text-align: center;
 }
 
 .intro-message {
@@ -60,6 +64,18 @@ h6 {
     font-size: 5em;
 }
 
+.intro-messag-import {
+    position: relative;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.intro-message-import > h1 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 5em;
+}
+
 .intro-divider {
     width: 400px;
     border-top: 1px solid #f8f8f8;
@@ -67,6 +83,10 @@ h6 {
 }
 
 .intro-message > h3 {
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+}
+
+.intro-message-import > h3 {
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
 }
 
