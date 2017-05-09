@@ -75,3 +75,5 @@ CREATE TABLE `lead_labels` (
  CONSTRAINT `FK_ID_LABEL_LEAD` FOREIGN KEY (`id_label`) REFERENCES `labels` (`id`),
  CONSTRAINT `FK_ID_LEAD_LEAD` FOREIGN KEY (`Id_lead`) REFERENCES `leads` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+ALTER TABLE `campaign_labels` ADD UNIQUE( `id_label`, `id_campaign`);

@@ -121,16 +121,23 @@ class ImportCSVController extends AppController
                             ->where(['id_lead =' => $mirowid ]);
           
                 //TO DO cambiar el first por un all o algo...
-                $mycampaignsleads = $query2->first();
+                $mycampaignsleads = $query2->all();
                 //$this->log($mycampaignsleads);
                 foreach ($arraycampana as $campanavalue){
-                    //hay que activar este if para insertar todo lead en leadcampaig siempre que no tenga ninguna campaña asociadad o bien cuando en el foreqach de las campaignleads no encuentra ninguna que coincida con la que queremos insertar.
-                    //if ($mycampaignsleads === null || ){
+                    //Primero debemos buscar si la capaña que estamos intentando asociar ya existe en BASE DE DATOS para ese mismo LEAD
+                    $insertarCampana=true;
+                    foreach ($mycampaignsleads as $cmpLeadsValue){
+                        if ($campanavalue == $cmpLeadsValue['id_campaign']){
+                            $insertarCampana=false;
+                        }
+                    }
+                    //si no existe insertamos en BBDD
+                    if ($insertarCampana){
                         $CampaignLead = $CampaignLeadsTable->newEntity();
                         $CampaignLead->id_campaign = $campanavalue;
                         $CampaignLead->id_lead = $mirowid;
                         $CampaignLeadsTable->save($CampaignLead);
-                   // }
+                    }
                 }                   
  
             }
