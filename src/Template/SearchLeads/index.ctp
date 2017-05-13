@@ -96,4 +96,10 @@
         </ul>
         <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
     </div>
+    <div>
+        <?= $this->Html->link('export', [
+            'controller' => 'SearchLeads', 
+            'action' => 'export'
+        ]) ?>
+    </div>
 </div>

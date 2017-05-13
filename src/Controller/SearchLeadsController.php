@@ -168,4 +168,16 @@ class SearchLeadsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    public function export() 
+    {
+        $this->loadModel("Leads");
+        $this->response->download('export.csv');
+        $data = $this->Leads->find('all')->toArray();
+        $_header = ['ID', 'Nombre', 'Apellido', 'Correo electrónico', 'Cargo', 'Empresa', 'website', 'Region / País', 'Teléfono', 'LinkedIn', 'Industria', 'Fecha de creación', 'Fecha de modificación'];
+        $_serialize = 'data';
+        $this->set(compact('data', '_serialize', '_header'));
+        $this->viewBuilder()->className('CsvView.Csv');
+        return;
+    }
+
 }

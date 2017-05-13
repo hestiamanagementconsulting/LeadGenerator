@@ -9,7 +9,7 @@
             <div class="col-lg-12">
                 <div class="title-message-import">
                     <h1>Importación</h1>
-                    <h3>Plantilla CSV descargar aquí</h3>
+                    <h3>Plantilla CSV descargar <a href="../webroot/templates/PlantillaCSV.zip">aquí</a></h3>
                     <hr class="intro-divider">
                 </div>
             </div>
