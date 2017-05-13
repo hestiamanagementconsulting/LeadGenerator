@@ -86,6 +86,15 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+    <?= $this->Form->create('exportar',['url' => ['controller'=>'SearchLeads','action' => 'export'],'class'=>'form-inline','role'=>'form',]) ?>
+    <fieldset>
+        <div class="form-group">
+            <div class="col-md-1">
+                <button id="Submit" name="Submit" class="btn btn-primary">Exportar Leads</button>
+            </div>
+        </div>
+    </fieldset>
+    <?= $this->Form->end() ?>
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->first('<< ' . __('first')) ?>
@@ -96,10 +105,5 @@
         </ul>
         <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
     </div>
-    <div>
-        <?= $this->Html->link('export', [
-            'controller' => 'SearchLeads', 
-            'action' => 'export'
-        ]) ?>
-    </div>
+    
 </div>
