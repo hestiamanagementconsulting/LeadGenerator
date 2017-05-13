@@ -74,11 +74,30 @@ class SearchLeadsController extends AppController
         $leadSearch = $this->Leads->patchEntity($leadSearch, $this->request->getData());
 
         //Cargamos una lista de todos los Leads
-        $this->loadModel("Leads");
-        $leads = $this->paginate($this->Leads);
+        $leads = $this->paginate($this->Leads->find('all'));
 
         $this->set(compact('leads'));
         $this->set('_serialize', ['leads']);
+
+        //Rellenamos los campos de campañas para ser desplegables
+        $this->loadModel("Campaigns");
+        $query = $this->Campaigns->find('all');
+        $data = $query->all();
+
+        foreach ($data as $value) {
+            $OpcionesCampana[$value['id']] = $value['nombre'];
+        }
+        $this->set(compact('OpcionesCampana'));
+
+        //Rellenamos los campos de campañas para ser desplegables
+        $this->loadModel("Labels");
+        $queryLabels = $this->Labels->find('all');
+        $dataLabels = $queryLabels->all();
+
+        foreach ($dataLabels as $valueLabel) {
+            $OpcionesEtiqueta[$valueLabel['id']] = $valueLabel['nombre'];
+        }
+        $this->set(compact('OpcionesEtiqueta'));
     }
 
     /**
