@@ -11,18 +11,29 @@
     <div class="row">
         <div class="col-md-12">
             <?= $this->Form->create('Buscar',['type' => 'file','url' => ['controller'=>'SearchLeads','action' => 'searchLead'],'class'=>'form-inline','role'=>'form',]) ?>
-                <fieldset>
+               <fieldset>
+                    <div class="form-group">
+                      <label for="campoBusqueda">Texto a buscar: </label>
+                      <input type="text" class="form-control" name="campoBusqueda" id="campoBusqueda">
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                      ¿En qué columnas?:
+                    </div>
+                    <div class="checkbox">
+                      <label><input type="checkbox" value="nombre" name="checkbox[]">Nombre: </label>
+                      <label><input type="checkbox" value="apellido" name="checkbox[]">Apellido: </label>
+                      <label><input type="checkbox" value="email" name="checkbox[]">Email: </label>
+                      <label><input type="checkbox" value="cargo" name="checkbox[]">Cargo: </label>
+                      <label><input type="checkbox" value="empresa" name="checkbox[]">Empresa: </label>
+                      <label><input type="checkbox" value="website" name="checkbox[]">Website: </label>
+                      <label><input type="checkbox" value="region_pais" name="checkbox[]">Región País: </label>
+                      <label><input type="checkbox" value="telefono" name="checkbox[]">Teléfono: </label>
+                      <label><input type="checkbox" value="LinkedIn" name="checkbox[]">LinkedIn: </label>
+                      <label><input type="checkbox" value="Industria" name="checkbox[]">Industria: </label>
+                    </div>
                     <?php
-                        echo $this->Form->control('nombre');
-                        echo $this->Form->control('apellido');
-                        echo $this->Form->control('email');
-                        echo $this->Form->control('cargo');
-                        echo $this->Form->control('empresa');
-                        echo $this->Form->control('website');
-                        echo $this->Form->control('region_pais');
-                        echo $this->Form->control('telefono');
-                        echo $this->Form->control('LinkedIn');
-                        echo $this->Form->control('Industria');
                         echo $this->Form->select('Campanas', $OpcionesCampana, [
                                                  'multiple' => 'multiple'
                                                  ]);
