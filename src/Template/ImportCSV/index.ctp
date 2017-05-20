@@ -64,7 +64,7 @@
               </div>
               <div class="form-group">
                  <div class="col-md-1">
-                  <button id="Submit" name="Submit" class="btn btn-primary">Cargar Leads</button>
+                  <button id="Submit" name="Submit" class="btn btn-default btn-lg">Cargar Leads</button>
                  </div>
               </div>
         </fieldset>

@@ -3,7 +3,7 @@
   * @var \App\View\AppView $this
   */
 ?>
-<div class="intro-import">
+<div class="container">
     <nav class="page-header" id="actions-sidebar">
         <ul class="page-header">
             <li><?= ('Accciones') ?></li>
