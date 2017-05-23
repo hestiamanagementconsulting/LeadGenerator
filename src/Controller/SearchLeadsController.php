@@ -128,7 +128,7 @@ class SearchLeadsController extends AppController
             }
         }
         $where = $where . $inLeadId;
-        $this->log($where);
+
         $this->loadModel("Leads");
         //Usamos this->Leads porque estamos en controlador, si fuese la tabla seria $Leads
         $query = $this->Leads

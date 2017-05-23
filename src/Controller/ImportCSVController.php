@@ -68,6 +68,7 @@ class ImportCSVController extends AppController
         $CampaignLeadsTable = TableRegistry::get('CampaignLeads');
         $CampaignLabelsTable = TableRegistry::get('CampaignLabels');
         $LeadsTable = TableRegistry::get('Leads');
+        $LeadLabelsTable = TableRegistry::get('LeadLabels');
         //Se lo asignamos a una variable fichero con un nombre temporal
         $file = $data['tmp_name'];
         //Abrimos el fichero
@@ -105,7 +106,15 @@ class ImportCSVController extends AppController
                     $CampaignLead->id_campaign = $campanavalue;
                     $CampaignLead->id_lead = $lead->id;
                     $CampaignLeadsTable->save($CampaignLead);
-                }   
+                }
+                //para cada Lead también lo asignamos a la etiqueta directamente sin pasar por la campaña
+                //$this->loadModel("LeadLabels");
+                //foreach ($arrayetiquetas as $etiquetavalue){
+                //    $LeadLabel = $LeadLabelsTable->newEntity();
+                //    $LeadLabel->Id_lead = $lead->id;
+                //    $LeadLabel->id_label = $etiquetavalue;
+                //    $LeadLabelsTable->save($LeadLabel);
+                //} 
             }
             else{
                 //En caso de no insertar el Lead significa que ya existe el mail en BBDD con lo que se debe asociar el Lead existente a la nueva campaña
@@ -138,8 +147,15 @@ class ImportCSVController extends AppController
                         $CampaignLead->id_lead = $mirowid;
                         $CampaignLeadsTable->save($CampaignLead);
                     }
-                }                   
- 
+                }
+                //para cada Lead también lo asignamos a la etiqueta directamente sin pasar por la campaña
+                //$this->loadModel("LeadLabels");
+                //foreach ($arrayetiquetas as $etiquetavalue){
+                //    $LeadLabel = $LeadLabelsTable->newEntity();
+                //    $LeadLabel->Id_lead = $mirowid;
+                //    $LeadLabel->id_label = $etiquetavalue;
+                //    $LeadLabelsTable->save($LeadLabel);
+                //}                    
             }
         }
         fclose($handle);

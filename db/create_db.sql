@@ -86,3 +86,5 @@ CREATE TABLE users (
     created DATETIME DEFAULT NULL,
     modified DATETIME DEFAULT NULL
 );
+
+ALTER TABLE `lead_labels` ADD UNIQUE( `id_label`, `Id_lead`);
