@@ -22,9 +22,14 @@
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('cake.css') ?>
+    <?= $this->Html->css('bootstrap.min') ?>
+    <?= $this->Html->script(['bootstrap.min', 'jquery-3.2.0.min']) ?>
 
+    <!-- Custom CSS -->
+    <?= $this->Html->css('landing-page.css') ?>
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:500i|Roboto:300,400,700|Roboto+Mono" rel="stylesheet">
+    
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
